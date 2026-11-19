@@ -300,7 +300,7 @@ public sealed partial class MainPage : Page
     {
         nint previous = AutoClicker.TargetWindow;
         nint self = WindowNative.GetWindowHandle(App.MainWindow);
-        List<WindowEntry> windows = WindowHelper.GetOpenWindows(self);
+        List<WindowEntry> windows = TargetWindowHelper.GetOpenWindows(self);
 
         List<object> items = [NoTargetLabel, .. windows];
         TargetWindowComboBox.ItemsSource = items;

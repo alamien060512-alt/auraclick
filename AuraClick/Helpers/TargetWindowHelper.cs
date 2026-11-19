@@ -25,7 +25,7 @@ public sealed class WindowEntry(nint handle, string title)
 /// <summary>
 /// Helpers for listing top-level windows and bringing one to the foreground.
 /// </summary>
-public static class WindowHelper
+public static class TargetWindowHelper
 {
     private const int SwRestore = 9;
     private const int DwmaCloaked = 14;

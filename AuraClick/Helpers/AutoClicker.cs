@@ -109,7 +109,7 @@ public static class AutoClicker
             {
                 if (target != 0)
                 {
-                    if (!WindowHelper.Exists(target))
+                    if (!TargetWindowHelper.Exists(target))
                     {
                         // Target window was closed
                         cts.Cancel();
@@ -118,12 +118,12 @@ public static class AutoClicker
                     }
 
                     // Games ignore background input, so focus the window, press, hold briefly, release, then go back
-                    nint previous = WindowHelper.BringToFront(target);
+                    nint previous = TargetWindowHelper.BringToFront(target);
                     await Task.Delay(80).ConfigureAwait(false);
                     _ = PInvoke.SendInput(click.AsSpan(0, 1), Marshal.SizeOf<INPUT>());
                     await Task.Delay(60).ConfigureAwait(false);
                     _ = PInvoke.SendInput(click.AsSpan(1, 1), Marshal.SizeOf<INPUT>());
-                    WindowHelper.Restore(previous, target);
+                    TargetWindowHelper.Restore(previous, target);
                 }
                 else
                 {
